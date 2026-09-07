@@ -5,7 +5,7 @@ import { education } from '../data/education';
 
 const Education = () => {
   return (
-    <section id="education" className="py-24 relative bg-[#050914]/50 border-y border-white/5">
+    <section id="education" className="py-16 md:py-24 relative bg-[#050914]/50 border-y border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <motion.div 

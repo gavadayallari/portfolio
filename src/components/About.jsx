@@ -4,7 +4,7 @@ import { Terminal, Cpu, Layout, Code2 } from 'lucide-react';
 
 const About = () => {
   return (
-    <section id="about" className="py-24 relative">
+    <section id="about" className="py-16 md:py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <motion.div 
@@ -12,7 +12,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             About <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500">Me</span>
@@ -28,9 +28,9 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative flex justify-center items-center"
+            className="relative flex justify-center items-center mt-4 md:mt-0"
           >
-            <div className="relative w-72 h-72 md:w-96 md:h-96">
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-96">
               {/* Outer decorative ring */}
               <div className="absolute inset-0 rounded-full border border-cyan-500/20 animate-[spin_20s_linear_infinite]"></div>
               
@@ -38,20 +38,20 @@ const About = () => {
               <div className="absolute inset-4 rounded-full bg-gradient-to-br from-cyan-900/40 to-purple-900/40 backdrop-blur-xl border border-white/10 flex items-center justify-center shadow-[0_0_50px_rgba(34,211,238,0.15)] overflow-hidden">
                 {/* Profile Placeholder (can be replaced with img tag later) */}
                 <div className="text-gray-500 flex flex-col items-center">
-                   <Code2 size={64} className="text-cyan-400/50 mb-2" />
-                   <span className="text-sm font-medium tracking-widest text-cyan-400/50 uppercase">Profile.png</span>
+                   <Code2 className="w-12 h-12 md:w-16 md:h-16 text-cyan-400/50 mb-2" />
+                   <span className="text-xs md:text-sm font-medium tracking-widest text-cyan-400/50 uppercase">Profile.png</span>
                 </div>
               </div>
               
               {/* Orbiting Icons */}
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 p-3 bg-[#030712] border border-white/10 rounded-full text-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.2)]">
-                <Terminal size={20} />
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 p-2 sm:p-3 bg-[#030712] border border-white/10 rounded-full text-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+                <Terminal className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div className="absolute top-1/2 -right-4 -translate-y-1/2 p-3 bg-[#030712] border border-white/10 rounded-full text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.2)]">
-                <Cpu size={20} />
+              <div className="absolute top-1/2 -right-3 sm:-right-4 -translate-y-1/2 p-2 sm:p-3 bg-[#030712] border border-white/10 rounded-full text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+                <Cpu className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 p-3 bg-[#030712] border border-white/10 rounded-full text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
-                <Layout size={20} />
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 p-2 sm:p-3 bg-[#030712] border border-white/10 rounded-full text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                <Layout className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
             </div>
           </motion.div>

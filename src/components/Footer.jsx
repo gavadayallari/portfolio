@@ -25,13 +25,13 @@ const Footer = () => {
           </div>
           
           <div className="flex gap-4">
-            <a href="#" className="text-gray-500 hover:text-cyan-400 transition-colors">
+            <a href="https://github.com/gavadayallari" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-cyan-400 transition-colors">
               <Github size={20} />
             </a>
-            <a href="#" className="text-gray-500 hover:text-cyan-400 transition-colors">
+            <a href="https://www.linkedin.com/in/yallari-gavada" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-cyan-400 transition-colors">
               <Linkedin size={20} />
             </a>
-            <a href="mailto:yallarigavada11@gmail.com" className="text-gray-500 hover:text-cyan-400 transition-colors">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yallarigavada11@gmail.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-cyan-400 transition-colors">
               <Mail size={20} />
             </a>
           </div>

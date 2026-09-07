@@ -6,7 +6,7 @@ import { projects } from '../data/projects';
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 relative">
+    <section id="projects" className="py-16 md:py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <motion.div 
@@ -65,11 +65,11 @@ const Projects = () => {
                       <div className="text-white">{'}'};</div>
                       
                       {/* Fake Cursors */}
-                      <div className="absolute top-[130px] left-[150px] flex flex-col items-center animate-pulse">
+                      <div className="absolute top-[50%] left-[45%] flex flex-col items-center animate-pulse">
                         <div className="w-[2px] h-4 bg-cyan-400"></div>
                         <div className="bg-cyan-400 text-[#030712] text-[10px] px-1.5 py-0.5 rounded-sm font-bold mt-1">Yallari</div>
                       </div>
-                      <div className="absolute top-[80px] left-[220px] flex flex-col items-center animate-pulse delay-300">
+                      <div className="absolute top-[30%] left-[65%] flex flex-col items-center animate-pulse delay-300">
                         <div className="w-[2px] h-4 bg-purple-400"></div>
                         <div className="bg-purple-400 text-white text-[10px] px-1.5 py-0.5 rounded-sm font-bold mt-1">Guest</div>
                       </div>
@@ -78,8 +78,8 @@ const Projects = () => {
                 </div>
 
                 {/* Project Info */}
-                <div className="p-8 lg:p-12 flex flex-col justify-center relative z-10">
-                  <h3 className="text-3xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">
+                <div className="p-6 md:p-8 lg:p-12 flex flex-col justify-center relative z-10">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">
                     {project.title}
                   </h3>
                   
@@ -91,7 +91,7 @@ const Projects = () => {
                     ))}
                   </div>
                   
-                  <p className="text-gray-400 leading-relaxed mb-8 text-lg">
+                  <p className="text-gray-400 leading-relaxed mb-6 md:mb-8 text-sm md:text-base lg:text-lg">
                     {project.description}
                   </p>
 
@@ -104,11 +104,11 @@ const Projects = () => {
                     ))}
                   </div>
                   
-                  <div className="flex gap-4 mt-auto pt-6 border-t border-white/10">
-                    <button disabled className="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 font-medium cursor-not-allowed opacity-50">
+                  <div className="flex flex-col sm:flex-row gap-4 mt-auto pt-6 border-t border-white/10">
+                    <button disabled className="flex items-center justify-center sm:justify-start gap-2 px-6 py-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 font-medium cursor-not-allowed opacity-50">
                       <Github size={18} /> Code (Private)
                     </button>
-                    <button disabled className="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-gradient-to-r from-cyan-600/50 to-blue-600/50 text-gray-300 font-medium cursor-not-allowed opacity-50">
+                    <button disabled className="flex items-center justify-center sm:justify-start gap-2 px-6 py-2.5 rounded-lg bg-gradient-to-r from-cyan-600/50 to-blue-600/50 text-gray-300 font-medium cursor-not-allowed opacity-50">
                       <ExternalLink size={18} /> Live Demo
                     </button>
                   </div>

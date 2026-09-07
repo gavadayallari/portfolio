@@ -5,7 +5,7 @@ import { experience } from '../data/experience';
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-24 relative">
+    <section id="experience" className="py-16 md:py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <motion.div 
@@ -42,8 +42,8 @@ const Experience = () => {
                 </div>
                 
                 {/* Content */}
-                <div className="ml-20 md:ml-0 md:w-1/2 w-full md:px-12">
-                  <div className={`p-6 rounded-2xl bg-[#080d1a] border border-white/10 hover:border-cyan-500/30 transition-colors shadow-xl group ${idx % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
+                <div className="ml-16 sm:ml-20 md:ml-0 flex-1 md:w-1/2 md:px-12">
+                  <div className={`p-5 sm:p-6 rounded-2xl bg-[#080d1a] border border-white/10 hover:border-cyan-500/30 transition-colors shadow-xl group ${idx % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
                     <div className={`flex flex-col ${idx % 2 === 0 ? 'md:items-start' : 'md:items-end'} mb-4`}>
                       <span className="inline-block px-3 py-1 text-xs font-semibold text-purple-400 bg-purple-900/20 border border-purple-500/20 rounded-full mb-3">
                         {exp.duration}

@@ -34,19 +34,19 @@ const row2 = [
 ];
 
 const SkillCard = ({ skill }) => (
-  <div className="w-[210px] h-[180px] flex flex-col items-center justify-center p-5 mx-4 rounded-[20px] bg-gradient-to-b from-[#0a0f1c] to-[#030712] backdrop-blur-md border border-white/10 hover:border-cyan-500/40 transition-all shadow-lg hover:shadow-[0_0_25px_rgba(34,211,238,0.15)] hover:-translate-y-2 group flex-shrink-0 cursor-default relative overflow-hidden">
+  <div className="w-[170px] sm:w-[210px] h-[150px] sm:h-[180px] flex flex-col items-center justify-center p-4 sm:p-5 mx-2 sm:mx-4 rounded-[20px] bg-gradient-to-b from-[#0a0f1c] to-[#030712] backdrop-blur-md border border-white/10 hover:border-cyan-500/40 transition-all shadow-lg hover:shadow-[0_0_25px_rgba(34,211,238,0.15)] hover:-translate-y-2 group flex-shrink-0 cursor-default relative overflow-hidden">
     {/* Subtle inner top glow */}
     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
     
-    <div className={`w-[60px] h-[60px] flex items-center justify-center rounded-2xl bg-[#050914] border border-white/5 shadow-inner group-hover:border-white/10 transition-colors mb-4 ${skill.color}`}>
-      <skill.icon size={30} />
+    <div className={`w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] flex items-center justify-center rounded-2xl bg-[#050914] border border-white/5 shadow-inner group-hover:border-white/10 transition-colors mb-3 sm:mb-4 ${skill.color}`}>
+      <skill.icon className="text-[24px] sm:text-[30px]" />
     </div>
     
-    <h4 className="text-white font-bold text-[17px] text-center mb-1.5 tracking-wide group-hover:text-cyan-400 transition-colors">
+    <h4 className="text-white font-bold text-[15px] sm:text-[17px] text-center mb-1.5 tracking-wide group-hover:text-cyan-400 transition-colors">
       {skill.name}
     </h4>
     
-    <p className="text-gray-500 text-[13px] text-center font-medium">
+    <p className="text-gray-500 text-[11px] sm:text-[13px] text-center font-medium">
       {skill.description}
     </p>
   </div>
@@ -54,7 +54,7 @@ const SkillCard = ({ skill }) => (
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 relative overflow-hidden">
+    <section id="skills" className="py-16 md:py-24 relative overflow-hidden">
       {/* Background Glows */}
       <div className="absolute top-0 right-[-10%] w-[40%] h-[40%] rounded-full bg-cyan-900/10 blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-0 left-[-10%] w-[40%] h-[40%] rounded-full bg-purple-900/10 blur-[120px] pointer-events-none"></div>

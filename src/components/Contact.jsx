@@ -16,12 +16,12 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Mailto fallback
-    window.location.href = `mailto:yallarigavada11@gmail.com?subject=Contact from ${formData.name}&body=${formData.message} (%0A%0AFrom: ${formData.email})`;
+    // Gmail fallback
+    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=yallarigavada11@gmail.com&su=Contact from ${formData.name}&body=${formData.message} (From: ${formData.email})`, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-16 md:py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <motion.div 
@@ -29,7 +29,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Let's Work <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Together</span>
@@ -56,19 +56,19 @@ const Contact = () => {
 
             <div className="space-y-6">
               <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-cyan-900/20 border border-cyan-500/20 flex items-center justify-center group-hover:bg-cyan-500/20 transition-colors">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yallarigavada11@gmail.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-cyan-900/20 border border-cyan-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/20 transition-colors">
                   <Mail size={20} className="text-cyan-400" />
-                </div>
-                <div>
+                </a>
+                <div className="min-w-0">
                   <div className="text-sm text-gray-500 font-medium">Email</div>
-                  <a href="mailto:yallarigavada11@gmail.com" className="text-gray-300 hover:text-cyan-400 transition-colors">
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yallarigavada11@gmail.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-cyan-400 transition-colors truncate block">
                     yallarigavada11@gmail.com
                   </a>
                 </div>
               </div>
               
               <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-blue-900/20 border border-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+                <div className="w-12 h-12 rounded-full bg-blue-900/20 border border-blue-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/20 transition-colors">
                   <Phone size={20} className="text-blue-400" />
                 </div>
                 <div>
@@ -80,7 +80,7 @@ const Contact = () => {
               </div>
 
               <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-purple-900/20 border border-purple-500/20 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">
+                <div className="w-12 h-12 rounded-full bg-purple-900/20 border border-purple-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-purple-500/20 transition-colors">
                   <MapPin size={20} className="text-purple-400" />
                 </div>
                 <div>
@@ -93,10 +93,10 @@ const Contact = () => {
             </div>
 
             <div className="pt-8 flex gap-4">
-              <a href="#" className="p-3 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-cyan-400 hover:bg-white/10 transition-all">
+              <a href="https://github.com/gavadayallari" target="_blank" rel="noopener noreferrer" className="p-3 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-cyan-400 hover:bg-white/10 transition-all">
                 <Github size={20} />
               </a>
-              <a href="#" className="p-3 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-cyan-400 hover:bg-white/10 transition-all">
+              <a href="https://www.linkedin.com/in/yallari-gavada" target="_blank" rel="noopener noreferrer" className="p-3 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-cyan-400 hover:bg-white/10 transition-all">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -109,7 +109,7 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <form onSubmit={handleSubmit} className="p-8 rounded-2xl bg-[#080d1a] border border-white/10 shadow-2xl space-y-6">
+            <form onSubmit={handleSubmit} className="p-6 sm:p-8 rounded-2xl bg-[#080d1a] border border-white/10 shadow-2xl space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">Name</label>
                 <input 

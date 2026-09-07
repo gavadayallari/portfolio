@@ -4,7 +4,7 @@ import { Trophy, Star, Award } from 'lucide-react';
 
 const Achievements = () => {
   return (
-    <section id="achievements" className="py-24 relative overflow-hidden">
+    <section id="achievements" className="py-16 md:py-24 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-yellow-500/5 blur-[120px] rounded-full pointer-events-none"></div>
 
