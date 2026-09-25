@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Github, Linkedin } from './Icons';
 
 const Contact = () => {
@@ -10,14 +10,89 @@ const Contact = () => {
     message: ''
   });
 
+  const [status, setStatus] = useState({
+    submitting: false,
+    success: false,
+    error: false,
+    message: ''
+  });
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Gmail fallback
-    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=yallarigavada11@gmail.com&su=Contact from ${formData.name}&body=${formData.message} (From: ${formData.email})`, '_blank', 'noopener,noreferrer');
+    setStatus({ submitting: true, success: false, error: false, message: '' });
+
+    try {
+      const web3Key = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+      let response;
+      let data;
+
+      if (web3Key) {
+        response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            access_key: web3Key,
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            subject: `Portfolio Message from ${formData.name}`
+          })
+        });
+        data = await response.json();
+      } else {
+        response = await fetch('https://formsubmit.co/ajax/yallarigavada11@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            _subject: `Portfolio Message from ${formData.name}`,
+            _template: 'table',
+            _captcha: 'false'
+          })
+        });
+        data = await response.json();
+      }
+
+      if (response.ok && (data.success === 'true' || data.success === true)) {
+        setStatus({
+          submitting: false,
+          success: true,
+          error: false,
+          message: 'Thank you! Your message has been sent successfully. I will get back to you soon.'
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else if (data.message && data.message.toLowerCase().includes('activat')) {
+        setStatus({
+          submitting: false,
+          success: true,
+          error: false,
+          message: "Check your email (yallarigavada11@gmail.com) and click 'Activate Form' once. After that, all messages will come directly to your inbox!"
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error(data.message || 'Something went wrong while sending your message.');
+      }
+    } catch (err) {
+      console.error('Contact Form Error:', err);
+      setStatus({
+        submitting: false,
+        success: false,
+        error: true,
+        message: err.message || 'Failed to send message. Please try again or email directly at yallarigavada11@gmail.com.'
+      });
+    }
   };
 
   return (
@@ -115,6 +190,7 @@ const Contact = () => {
                 <input 
                   type="text" 
                   id="name" 
+                  name="name"
                   required
                   value={formData.name}
                   onChange={handleChange}
@@ -128,6 +204,7 @@ const Contact = () => {
                 <input 
                   type="email" 
                   id="email" 
+                  name="email"
                   required
                   value={formData.email}
                   onChange={handleChange}
@@ -140,6 +217,7 @@ const Contact = () => {
                 <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">Message</label>
                 <textarea 
                   id="message" 
+                  name="message"
                   required
                   rows="4"
                   value={formData.message}
@@ -148,13 +226,47 @@ const Contact = () => {
                   placeholder="How can I help you?"
                 ></textarea>
               </div>
+
+              <AnimatePresence>
+                {status.message && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className={`p-4 rounded-xl border flex items-start gap-3 text-sm ${
+                      status.success 
+                        ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300' 
+                        : 'bg-rose-500/10 border-rose-500/30 text-rose-300'
+                    }`}
+                  >
+                    {status.success ? (
+                      <CheckCircle2 size={18} className="text-emerald-400 mt-0.5 flex-shrink-0" />
+                    ) : (
+                      <AlertCircle size={18} className="text-rose-400 mt-0.5 flex-shrink-0" />
+                    )}
+                    <div className="leading-relaxed">
+                      {status.message}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
               
               <button 
                 type="submit" 
-                className="w-full py-3.5 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold flex items-center justify-center gap-2 hover:from-cyan-500 hover:to-blue-500 transition-all shadow-[0_0_20px_rgba(8,145,178,0.3)]"
+                disabled={status.submitting}
+                className="w-full py-3.5 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold flex items-center justify-center gap-2 hover:from-cyan-500 hover:to-blue-500 transition-all shadow-[0_0_20px_rgba(8,145,178,0.3)] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
-                <Send size={18} />
-                Send Message
+                {status.submitting ? (
+                  <>
+                    <Loader2 size={18} className="animate-spin" />
+                    Sending Message...
+                  </>
+                ) : (
+                  <>
+                    <Send size={18} />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </motion.div>
