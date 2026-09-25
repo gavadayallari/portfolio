@@ -105,12 +105,35 @@ const Projects = () => {
                   </div>
                   
                   <div className="flex flex-col sm:flex-row gap-4 mt-auto pt-6 border-t border-white/10">
-                    <button disabled className="flex items-center justify-center sm:justify-start gap-2 px-6 py-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 font-medium cursor-not-allowed opacity-50">
-                      <Github size={18} /> Code (Private)
-                    </button>
-                    <button disabled className="flex items-center justify-center sm:justify-start gap-2 px-6 py-2.5 rounded-lg bg-gradient-to-r from-cyan-600/50 to-blue-600/50 text-gray-300 font-medium cursor-not-allowed opacity-50">
-                      <ExternalLink size={18} /> Live Demo
-                    </button>
+                    {project.githubUrl && project.githubUrl !== '#' ? (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center sm:justify-start gap-2 px-6 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-500/50 text-white font-medium transition-all duration-300"
+                      >
+                        <Github size={18} /> Code
+                      </a>
+                    ) : (
+                      <button disabled className="flex items-center justify-center sm:justify-start gap-2 px-6 py-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 font-medium cursor-not-allowed opacity-50">
+                        <Github size={18} /> Code (Private)
+                      </button>
+                    )}
+
+                    {project.liveUrl && project.liveUrl !== '#' ? (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center sm:justify-start gap-2 px-6 py-2.5 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-medium shadow-[0_0_20px_rgba(8,145,178,0.3)] hover:shadow-[0_0_25px_rgba(8,145,178,0.5)] transition-all duration-300 transform hover:-translate-y-0.5"
+                      >
+                        <ExternalLink size={18} /> Live Demo
+                      </a>
+                    ) : (
+                      <button disabled className="flex items-center justify-center sm:justify-start gap-2 px-6 py-2.5 rounded-lg bg-gradient-to-r from-cyan-600/50 to-blue-600/50 text-gray-300 font-medium cursor-not-allowed opacity-50">
+                        <ExternalLink size={18} /> Live Demo
+                      </button>
+                    )}
                   </div>
                 </div>
                 

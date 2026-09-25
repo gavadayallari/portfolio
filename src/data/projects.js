@@ -17,6 +17,6 @@ export const projects = [
     ],
     technologies: ["React", "JavaScript", "Node.js", "Socket.IO", "Tailwind CSS"],
     githubUrl: "#", // Placeholder
-    liveUrl: "#" // Placeholder
+    liveUrl: "https://real-time-code-editor-rho-eight.vercel.app/"
   }
 ];
